@@ -1,4 +1,3 @@
-# w08d03
 
 # To-Do-List Task
 Register/Login project with authentication and authorization 
