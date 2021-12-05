@@ -6,7 +6,7 @@ const authorization = require("../middleware/authorizathion");
 const taskRouter = express.Router();
 
 taskRouter.post("/addTask", authentication, addTask);
-taskRouter.get("/allTask", authentication, authorization, allTasks); 
+taskRouter.get("/allTask", authentication, allTasks); 
 
 taskRouter.put("/updateTask/:id", authentication, updateTask);
 

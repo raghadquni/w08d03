@@ -21,16 +21,15 @@ const addTask = (req, res) => {
   };
 
   
-// for admin
+// 
 const allTasks = (req, res) => {
     todoModel
-    .find({})
-    .populate("User")
+    .find({isDel: false , user: req.token.id })
     .then((result) => {
-      res.status(201).send(result);
+      res.status(200).json(result);
     })
     .catch((err) => {
-      res.status(400).send(err);
+      res.status(400).json(err);
     });
 };
 
