@@ -26,7 +26,13 @@ const allTasks = (req, res) => {
     todoModel
     .find({isDel: false , user: req.token.id })
     .then((result) => {
+      if (result.length > 0) {
+      console.log(result);
       res.status(200).json(result);
+      } else {
+        res.status(404).json("There is no tasks" );
+
+      }
     })
     .catch((err) => {
       res.status(400).json(err);

@@ -3,10 +3,11 @@ const { addTask, allTasks, updateTask, deleteTask, delateTaskAdmin} = require(".
 const authentication = require("../middleware/authentication");
 const authorization = require("../middleware/authorizathion");
 
+
 const taskRouter = express.Router();
 
 taskRouter.post("/addTask", authentication, addTask);
-taskRouter.get("/allTask", authentication, allTasks); 
+taskRouter.get("/allTask",  authentication, allTasks); 
 
 taskRouter.put("/updateTask/:id", authentication, updateTask);
 
