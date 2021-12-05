@@ -50,7 +50,6 @@ const login = (req, res) => {
   const { email, password , userNme} = req.body;
   console.log(email, password , userNme)
   userModel
-  // .find({ email: savedEmail} , { userNme: savedUserNme})
   .findOne({ $or: [{email} , { userNme }] }).populate("role").exec()
   .then(async (result) => {
     console.log(result);
