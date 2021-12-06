@@ -47,27 +47,25 @@ const getUsers = (req, res) => {
 
 // login
 const login = (req, res) => {
-  const { email, password , userNme} = req.body;
-  console.log(email, password , userNme)
+  const { email, password } = req.body;
+  // console.log(email, password , userNme)
+  const saveEmail = email.toLowerCase();
+
   userModel
-  .findOne({ $or: [{email} , { userNme }] }).populate("role").exec()
+  .findOne({email: saveEmail})
   .then(async (result) => {
     console.log(result);
       if (result) {
-        if (result.email == email || result.userNme == userNme ) {
+        if (result.email == email ) {
           const hashedPass = await bcrypt.compare(password, result.password);
-          
+          const payload = {
+            email: result.email,
+            role :result.role.role,
+          };
+
           console.log(hashedPass)
           if (hashedPass) {
-            const payload = {
-              email: result.email,
-              userNme: result.userNme,
-              role :result.role.role,
-            };
-            const options = {
-              // expiresIn: "60m",
-            };
-            let token = jwt.sign(payload, secret, options);
+            let token = jwt.sign(payload, secret);
             res.status(200).json({result,token});
           } else {
             res.status(400).json("Wrong email or password");

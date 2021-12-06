@@ -3,10 +3,9 @@ const todoModel = require("./../../db/models/todo");
 
 //Add task
 const addTask = (req, res) => {
-    const { task } = req.body;
-  
+    const { name } = req.body;
     const newTask = new todoModel({
-        task,
+      name,
       user: req.token.id,
     });
   
@@ -40,17 +39,36 @@ const allTasks = (req, res) => {
 };
 
 
+const TasksByid = (req, res) => {
+  const { id } = req.body
+  todoModel
+  .find({_id: id  , user: req.token.id })
+  .then((result) => {
+    if (result) {
+    console.log(result);
+    res.status(200).json(result);
+    } else {
+      res.status(404).json("There is no tasks" );
+
+    }
+  })
+  .catch((err) => {
+    res.status(400).json(err);
+  });
+};
+
+
+
 
 // update task
 const updateTask = (req, res) => {
   const { id } = req.params;
-  const { task, isDel } = req.body;
+  const { name } = req.body;
 
   todoModel
-    .findByIdAndUpdate(id, 
-        { task, isDel }, 
-        { new: true })
-    .exec()
+    .findByIdAndUpdate({_id: id, isDel: false},
+      {$set: { name: name}}
+    )
     .then((result) => {
       if (result) {
         res.status(201).send(result);
@@ -68,14 +86,13 @@ const deleteTask = (req, res) => {
   const { id } = req.params;
   todoModel
     .findOneAndUpdate(
-      { id, user: req.token.id, isDel: { $eq: false } },
-      { isDel: true },
-      { new: true }).exec()
+      { _id: id, isDel: false },
+      { $set: {isDel: true }})
     .then((result) => {
       if (result) {
         res.status(201).send(result);
       } else {
-        res.status(404).send("Deleted");
+        res.status(404).send("not found");
       }
     })
     .catch((err) => {
@@ -105,6 +122,7 @@ module.exports = {
     addTask,
     allTasks,
   updateTask,
+  TasksByid,
   deleteTask,
   delateTaskAdmin
 };
