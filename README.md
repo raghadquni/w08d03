@@ -71,3 +71,16 @@ npm i jsonwebtoken
 ```
 
 ## Backend routes
+| HTTP Method        | URL                    | Request Body              | Success status   | Error Status | Description |
+|--------------------|------------------------|---------------------------|------------------|--------------|-------------|
+| POST               | `/signup`              | { email, password, role } |                  |
+| POST               | `/login`               | { email, password }       |                  |
+| GET                | `/getUsers`            |                           |                  |
+| POST               | `/addTask`             | { name }                  |                  |
+| GET                | `/allTask`             |                           |                  |
+| PUT                | `delete`               | { id }                    |                  |
+| PUT                | `/updateTask/:id`      | { name }                  |                  |
+| PUT                | `/deleteTask/:id`      |                           |                  |
+| GET                | `TasksAdmin`           |                           |                  |
+| DELETE             | `/delateTaskAdmin/:id` |                           |                  |
+
