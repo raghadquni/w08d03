@@ -15,46 +15,31 @@ and creating new user (Admin/User) with a hashed password
 
 # Dependencies
 * express
-
-To bulid Server
 ``` 
 npm i express
 ```
-* dotenv
 
-To hide sensitive information
+* dotenv
 ``` 
 npm i dotenv
 ```
 
 * nodemon
-
-To Refresh the server automatically
 ``` 
 npm i nodemon
 ```
 
 * mongoose
-
-To save our database and the possibility to use it
-
 ``` 
 npm i mongoose
 ```
 
 * bcrypt
-
-To encrypt passwords
-
 ``` 
 npm i bcrypt
 ```
 
-
 * jsonwebtoken
-
-encode and decode for Node.js
-
 ``` 
 npm i jsonwebtoken
 ```
