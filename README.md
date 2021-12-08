@@ -47,9 +47,11 @@ npm i jsonwebtoken
 
 # Models
 - role model 
-`{
+``` 
+{
   role: { type: String, required: true },
   permissions: { type: Array, required: true },
-}`
+}
+```
 
 
