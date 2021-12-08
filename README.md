@@ -84,3 +84,7 @@ npm i jsonwebtoken
 | GET                | `TasksAdmin`           |                           | 200              | 400          |
 | DELETE             | `/delateTaskAdmin/:id` |                           | 200              | 404, 400     |
 
+
+# ER Diagram
+
+# UML Diagram
