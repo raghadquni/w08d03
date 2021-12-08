@@ -71,16 +71,16 @@ npm i jsonwebtoken
 ```
 
 ## Backend routes
-| HTTP Method        | URL                    | Request Body              | Success status   | Error Status | Description |
-|--------------------|------------------------|---------------------------|------------------|--------------|-------------|
-| POST               | `/signup`              | { email, password, role } |                  |
-| POST               | `/login`               | { email, password }       |                  |
-| GET                | `/getUsers`            |                           |                  |
-| POST               | `/addTask`             | { name }                  |                  |
-| GET                | `/allTask`             |                           |                  |
-| PUT                | `delete`               | { id }                    |                  |
-| PUT                | `/updateTask/:id`      | { name }                  |                  |
-| PUT                | `/deleteTask/:id`      |                           |                  |
-| GET                | `TasksAdmin`           |                           |                  |
-| DELETE             | `/delateTaskAdmin/:id` |                           |                  |
+| HTTP Method        | URL                    | Request Body              | Success status   | Error Status |
+|--------------------|------------------------|---------------------------|------------------|--------------|
+| POST               | `/signup`              | { email, password, role } | 201              | 400          |
+| POST               | `/login`               | { email, password }       | 200              | 400, 404     |
+| GET                | `/getUsers`            |                           | 200              | 400          |
+| POST               | `/addTask`             | { name }                  | 201              | 400          |
+| GET                | `/allTask`             |                           | 200              | 404, 400     |
+| PUT                | `delete`               | { id }                    | 200              | 404, 400     |
+| PUT                | `/updateTask/:id`      | { name }                  | 200              | 404, 400     |
+| PUT                | `/deleteTask/:id`      |                           | 200              | 404, 400     | 
+| GET                | `TasksAdmin`           |                           | 200              | 400          |
+| DELETE             | `/delateTaskAdmin/:id` |                           | 200              | 404, 400     |
 
